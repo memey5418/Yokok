@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume with Sparkle Effect</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scrollbars for a clean look */
+            background: url('https://i.pinimg.com/originals/23/fc/c1/23fcc187c7a2e0d778380fe359d5964d.jpg') no-repeat center center/cover;
+        }
+
+        .resume-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+            padding: 20px;
+        }
+
+        /* Profile Section */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        .profile h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile h2 {
+            font-size: 16px;
+            color: gold;
+        }
+
+        /* Details Section */
+        .details {
+            max-width: 600px;
+        }
+
+        .details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        .details p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .details .info div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .details .info div span {
+            font-weight: bold;
+            color: lightgray;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .resume-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 50px;
+            }
+
+            .profile {
+                margin-bottom: 0;
+                align-items: flex-start;
+            }
+
+            .details {
+                text-align: left;
+                max-width: 50%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="https://play-lh.googleusercontent.com/xmprzgNZZDfLqqDIvbdz96qSgijGJOuBRWEDBVuts6pxs7rNKWR7Kaj-gSGtJ-trYw=w526-h296-rw" alt="Profile Picture">
+            <h1>Zul Keli</h1>
+            <h2>Graphic Designer</h2>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details">
+            <h2>Career Goal</h2>
+            <p>Tolong kaki saya sakit,kau diam, kaki saya sakit, <strong>KAU</strong> diam</p>
+            <div class="info">
+                <div><span>D.O.B:</span> 12-8-1669</div>
+                <div><span>Phone:</span> +60........</div>
+                <div><span>Address:</span> Laut, sungai, dalam 1kaki</div>
+                <div><span>Email:</span> aquaman@River.com</div>
+                <div><span>Website:</span> www.myresume.com</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Trail Script -->
+    <script>
+        const trailCount = 20; // Number of trails
+        const trails = [];
+        let currentTrail = 0;
+
+        // Initialize trail elements
+        for (let i = 0; i < trailCount; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.display = 'none';
+            document.body.appendChild(trail);
+            trails.push(trail);
+        }
+
+        function createTrail(x, y) {
+            const trail = trails[currentTrail];
+            currentTrail = (currentTrail + 1) % trailCount;
+
+            // Position the trail and make it visible
+            trail.style.left = `${x - 5}px`;
+            trail.style.top = `${y - 5}px`;
+            trail.style.display = 'block';
+
+            // Restart the animation
+            trail.style.animation = 'none';
+            setTimeout(() => (trail.style.animation = 'sparkleFade 1s forwards, sparkleMove 1s ease-out'), 10);
+        }
+
+        // Mouse and touch events
+        document.addEventListener('mousemove', (e) => createTrail(e.clientX, e.clientY));
+        document.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            createTrail(touch.clientX, touch.clientY);
+        });
+    </script>
+</body>
+</html>
